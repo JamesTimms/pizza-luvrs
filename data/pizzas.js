@@ -7,16 +7,20 @@ const PizzaStore = require('./pizzaStore')
 async function create (name, toppings, img, username) {
   const imgUrl = await ImageStore.save(name.replace(/ /g, '-'), img)
   const pizza = new Pizza(name, toppings, imgUrl, username)
-  return PizzaStore.create(prePizza(pizza))
+  console.log("Create")
+  return PizzaStore.create(prepPizza(pizza))
 }
 
 // for mocks that don't need pizza images saved
 function batchImport (name, toppings, imgUrl, username) {
   const pizza = new Pizza(name, toppings, imgUrl, username)
   PizzaStore.create(prepPizza(pizza))
+  console.log(PizzaStore.pgClient)
+  console.log("Imported")
 }
 
 async function getForUser (username) {
+  console.log("get for user")
   return PizzaStore.findAll({
     where: {
       username: username
@@ -26,6 +30,7 @@ async function getForUser (username) {
 }
 
 async function getRecent () {
+  console.log("get recent")
   return PizzaStore.findAll({
     order: [['created', 'DESC']],
     limit: 4,
@@ -34,6 +39,7 @@ async function getRecent () {
 }
 
 async function get (pizzaId) {
+  console.log("get by id")
   return PizzaStore.findOne({
     where: {
       id: pizzaId
@@ -43,6 +49,7 @@ async function get (pizzaId) {
 }
 
 function prepPizza (pizza) {
+  console.log("pre pizza")
   return {
     ...pizza,
     toppings: JSON.stringify(pizza.toppings)
@@ -50,6 +57,7 @@ function prepPizza (pizza) {
 }
 
 function debriefPizza (Pizza) {
+  console.log("debrief pizza")
   return {
     ...pizza,
     toppings: JSON.parse(pizza.toppings)
@@ -57,6 +65,7 @@ function debriefPizza (Pizza) {
 }
 
 function debriefPizzas (pizzas) {
+  console.log("debrief pizzas")
   return pizzas.map(debriefPizza)
 }
 
