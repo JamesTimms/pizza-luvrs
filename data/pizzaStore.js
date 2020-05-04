@@ -39,44 +39,8 @@ const Pizza = pgClient.define('pizza', {
 
 })
 
-async function connect() {
-  console.log('Start connection attempt');
-  auth = await pgClient.authenticate();
-  console.log(auth)
-  pgClient.authenticate().then(data => console.log(data)).catch(error => console.log(error))
-  /*try {
-    console.log('Start connection attempt');
-    await pgClient.authenticate();
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }*/
-}
-
-connect()
-
-/*
-Pizza.sync().then(function(){
-  console.log('DB connection sucessful.');
-}, function(err){
-  // catch error here
-  console.log(err);
-
-});
-*/
-
-/*
-Pizza.sync()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
-*/
-
-/*Pizza.sync().then(() => {
+Pizza.sync().then(() => {
   console.log('postgres connection ready')
 })
-*/
+
 module.exports = Pizza
