@@ -334,12 +334,6 @@
         }
       }
     },
-    "dbsgdefault": {
-      "Type": "AWS::RDS::DBSecurityGroup",
-      "Properties": {
-        "GroupDescription": "default"
-      }
-    },
     "snspolicydynamodb": {
       "Type": "AWS::SNS::TopicPolicy",
       "Properties": {
