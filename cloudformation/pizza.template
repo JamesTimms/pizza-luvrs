@@ -170,7 +170,7 @@
         "AssociatePublicIpAddress": true,
         "ImageId": "ami-0ee9931b0ada7a999",
         "InstanceType": "t2.micro",
-        "KeyName": "pizza-keys",
+        "KeyName": "test@aws",
         "IamInstanceProfile": "reebric-pizza-s3-full",
         "SecurityGroups": [
           {
